@@ -1,0 +1,31 @@
+ALTER TABLE public.rwy ADD COLUMN geom geometry(Point, 4326);
+
+UPDATE public.rwy SET geom = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);
+
+select p.utc, p.geom, ST_Distance(p.geom, (select p2.geom from volusia.parcel p2 where parid=2004291))/5280  
+from public.rwy p
+where p.luc='1'
+order by p.geom <-> (select p2.geom from volusia.parcel p2 where parid=2004291) limit 1;
+
+alter table volusia.parcel add column fdistance double precision;
+
+update volusia.parcel p1 set fdistance = ST_Distance(p1.geom, p2.geom)/5280 from public.rwy p2
+where p1.parid=2004291 and p2.utc=
+'2021-04-18T20:15:21Z';
+
+alter table volusia.sales_analysis
+add column runway_distance double precision;
+
+update volusia.sales_analysis a set runway_distance = p.runway_distance from volusia.parcel p where a.parid=p.parid;
+
+alter table volusia.sales_analysis
+add column track_distance double precision;
+
+update volusia.sales_analysis a set track_distance = p.track_distance from volusia.parcel p where a.parid=p.parid;
+
+
+
+
+
+
+
