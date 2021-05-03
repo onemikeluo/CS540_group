@@ -1,8 +1,9 @@
 Our group project is to create a new column for the distance of each parcel in Volusia County to the nearest commercial flight path,
 and then to predict if the distance has effect on the price of the house,
 1st, use nearest_airport_new_column.txt to add a new column
-2nd, use new_column_loop.ipynb to loop through the records for each parcel's nearest airport
+2nd, use Flight_Path.ipynb to loop through the records for each parcel's nearest airport
 3rd, make Flight_Path.csv a Postgres table
 4th, use flight_path_distance.txt to add a new column
-
+5th, use Runway.ipynb to loop through the records for each parcel's nearest runway
+6th, use CS540_Sales_Regression.ipynb for the regression model of the price prediction
 refer to "Adding Column Feature and Price Prediction.pptx" for details.
