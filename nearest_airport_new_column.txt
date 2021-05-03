@@ -1,0 +1,21 @@
+select * from volusia.parcel where luc = '2000';
+
+select * from volusia.parcel
+limit 100
+
+select p.parid, p.luc, p.luc_desc, ST_Distance(p.geom, (select p2.geom from volusia.parcel p2 where parid=3565215))/5280  
+from volusia.parcel p
+where p.luc='2000'
+order by p.geom <-> (select p2.geom from volusia.parcel p2 where parid=3565215) 
+limit 5;
+
+select p.parid, p.luc, p.luc_desc, ST_Distance(p.geom, (select p2.geom from volusia.parcel p2 where parid=2004291))/5280  
+from volusia.parcel p
+where p.luc='2000'
+order by p.geom <-> (select p2.geom from volusia.parcel p2 where parid=2004291) limit 1;
+
+alter table volusia.parcel add column distance double precision;
+
+update volusia.parcel p1 set gcdistance = ST_Distance(p1.geom, p2.geom)/5280 from volusia.parcel p2 where p1.parid=2004291 and p2.parid=2002441;
+
+select * from volusia.parcel where distance>1;
