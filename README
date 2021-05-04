@@ -1,5 +1,14 @@
-Our group project is to create a new column for the distance of each parcel in Volusia County to the nearest commercial flight path,
-and then to predict if the distance has effect on the price of the house,
+The purpose of this project was to assess the impact of aviation on property prices. Based on domain knowledge, the researchers reviewed that aircraft noise is a major deterrent for property buyers to buy property near an airport. However, aircraft noise is not only limited to an airport as heavy turbine powered aircraft can increase noise levels several miles away from the airport. For this project, the researchers utilized several steps before creating a regression model:
+
+Utilize the property appraisal data for Volusia county for property data.
+
+Open-source flight track data for two airlines that operate to Daytona Beach Airport. This study was limited to Daytona Beach Airport and the turbine powered aircraft operated by the airlines. However, several smaller airports are located in Daytona Beach as well.
+
+Measure distance of each property to the runway and the flight tracks.
+
+Once the columns (track_distance and runway_distance) were added to the sales_analysis table, a Multiple Linear Regression was conducted
+
+
 1st, use nearest_airport_new_column.txt to add a new column
 2nd, use Flight_Path.ipynb to loop through the records for each parcel's nearest airport
 3rd, make Flight_Path.csv a Postgres table
